@@ -960,6 +960,11 @@ namespace FourSlash {
             this.goToMarker(markerName);
             this.verifyQuickInfoString(/*negative*/ false, expectedText, expectedDocumentation);
         }
+        public verifyQuickInfos(namesAndTexts: { [name: string]: string }) {
+            ts.forEachProperty(ts.createMap(namesAndTexts), (text, name) => {
+                this.verifyQuickInfoAt(name, text);
+            });
+        }
 
         public verifyQuickInfoString(negative: boolean, expectedText: string, expectedDocumentation?: string) {
             const actualQuickInfo = this.languageService.getQuickInfoAtPosition(this.activeFile.fileName, this.currentCaretPosition);
@@ -2995,6 +3000,10 @@ namespace FourSlashInterface {
         //move
         public quickInfoAt(markerName: string, expectedText?: string, expectedDocumentation?: string) {
             this.state.verifyQuickInfoAt(markerName, expectedText, expectedDocumentation);
+        }
+
+        public quickInfos(namesAndTexts: { [name: string]: string }) {
+            this.state.verifyQuickInfos(namesAndTexts);
         }
 
         public caretAtMarker(markerName?: string) {
