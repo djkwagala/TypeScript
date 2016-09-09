@@ -106,6 +106,7 @@
 ////  */
 ////function /*l*/l(param1: string) { /*9*/param1 = "hello"; }
 
+<<<<<<< 19670ffd42a32090602534d8f3ca2f9c591b3893
 goTo.marker('a');
 verify.quickInfoIs("var a: string", "This is firstLine\nThis is second Line\n\nThis is fourth Line");
 
