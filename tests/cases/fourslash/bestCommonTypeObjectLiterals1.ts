@@ -20,11 +20,10 @@
 ////var i: I;
 ////var /*4*/c3 = [i, a];
 
-verify.quickInfoAt("1", "var c: {\n    name: string;\n    age: number;\n}[]");
-
-verify.quickInfoAt("2", "var c1: {\n    name: string;\n    age: number;\n}[]");
-
-verify.quickInfoAt("3",
+verify.quickInfos({
+    1: "var c: {\n    name: string;\n    age: number;\n}[]",
+    2: "var c1: {\n    name: string;\n    age: number;\n}[]",
+    3:
 `var c2: ({
     name: string;
     age: number;
@@ -33,6 +32,6 @@ verify.quickInfoAt("3",
     name: string;
     age: number;
     dob: Date;
-})[]`);
-
-verify.quickInfoAt("4", "var c3: I[]");
+})[]`,
+    4: "var c3: I[]"
+});

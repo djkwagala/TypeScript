@@ -11,13 +11,15 @@
 ////var a/*9*/9 = Array<boolean>(1);
 ////var a/*10*/10 = Array("s");
 
-verify.quickInfoAt("1", "var a1: any[]");
-verify.quickInfoAt("2", "var a2: any[]");
-verify.quickInfoAt("3", "var a3: boolean[]");
-verify.quickInfoAt("4", "var a4: boolean[]");
-verify.quickInfoAt("5", "var a5: string[]");
-verify.quickInfoAt("6", "var a6: any[]");
-verify.quickInfoAt("7", "var a7: any[]");
-verify.quickInfoAt("8", "var a8: boolean[]");
-verify.quickInfoAt("9", "var a9: boolean[]");
-verify.quickInfoAt("10", "var a10: string[]");
+verify.quickInfos({
+    1: "var a1: any[]",
+    2: "var a2: any[]",
+    3: "var a3: boolean[]",
+    4: "var a4: boolean[]",
+    5: "var a5: string[]",
+    6: "var a6: any[]",
+    7: "var a7: any[]",
+    8: "var a8: boolean[]",
+    9: "var a9: boolean[]",
+    10: "var a10: string[]"
+});

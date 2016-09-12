@@ -16,24 +16,27 @@ var C = 'C';
 var D = 'D'
 goTo.marker(B);
 edit.insert('constructor(val: T) { }');
-verify.quickInfoAt("Asig", "constructor A<string>(): A<string>");
-
-verify.quickInfoAt("Bsig", "constructor B<string>(val: string): B<string>");
-
-verify.quickInfoAt("Csig", "constructor C<string>(val: string): C<string>");
-
-verify.quickInfoAt("Dsig", "constructor D<T>(val: T): D<T>"); // Cannot resolve signature
+verify.quickInfos({
+    Asig: "constructor A<string>(): A<string>",
+    Bsig: "constructor B<string>(val: string): B<string>",
+    Csig: "constructor C<string>(val: string): C<string>",
+    Dsig: "constructor D<T>(val: T): D<T>" // Cannot resolve signature
+});
 
 goTo.marker(C);
 edit.deleteAtCaret('constructor(val: T) { }'.length);
-verify.quickInfoAt("Asig", "constructor A<string>(): A<string>");
-verify.quickInfoAt("Bsig", "constructor B<string>(val: string): B<string>");
-verify.quickInfoAt("Csig", "constructor C<T>(): C<T>"); // Cannot resolve signature
-verify.quickInfoAt("Dsig", "constructor D<T>(val: T): D<T>"); // Cannot resolve signature
+verify.quickInfos({
+    Asig: "constructor A<string>(): A<string>",
+    Bsig: "constructor B<string>(val: string): B<string>",
+    Csig: "constructor C<T>(): C<T>", // Cannot resolve signature
+    Dsig: "constructor D<T>(val: T): D<T>" // Cannot resolve signature
+});
 
 goTo.marker(D);
 edit.deleteAtCaret("val: T".length);
-verify.quickInfoAt("Asig", "constructor A<string>(): A<string>");
-verify.quickInfoAt("Bsig", "constructor B<string>(val: string): B<string>");
-verify.quickInfoAt("Csig", "constructor C<T>(): C<T>"); // Cannot resolve signature
-verify.quickInfoAt("Dsig", "constructor D<string>(): D<string>");
+verify.quickInfos({
+    Asig: "constructor A<string>(): A<string>",
+    Bsig: "constructor B<string>(val: string): B<string>",
+    Csig: "constructor C<T>(): C<T>", // Cannot resolve signature
+    Dsig: "constructor D<string>(): D<string>"
+});

@@ -13,11 +13,9 @@
 
 edit.disableFormatting();
 
-goTo.marker('check');
-verify.quickInfoIs('constructor Check(val: any): Check');
+verify.quickInfoAt("check", "constructor Check(val: any): Check");
 
-goTo.marker('check2');
-verify.quickInfoIs('constructor M.Check2(val: any): Check2');
+verify.quickInfoAt("check2", "constructor M.Check2(val: any): Check2");
 
 goTo.marker('A');
 edit.deleteAtCaret('class A {}'.length);
