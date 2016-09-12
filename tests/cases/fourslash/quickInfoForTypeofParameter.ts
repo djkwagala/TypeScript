@@ -5,11 +5,6 @@
 ////    var x: typeof y/*ref2*/1;
 ////}
 
-goTo.marker('ref2');
-verify.quickInfoIs("(local var) y1: string", undefined);
-
-goTo.marker('ref1');
-verify.quickInfoIs("(local var) y1: string", undefined);
-
-goTo.marker('ref2');
-verify.quickInfoIs("(local var) y1: string", undefined);
+verify.quickInfoAt("ref2", "(local var) y1: string");
+verify.quickInfoAt("ref1", "(local var) y1: string");
+verify.quickInfoAt("ref2", "(local var) y1: string");

@@ -11,16 +11,13 @@
 ////var /*2*/x = point.x;
 ////point./*3*/x = 30;
 
-goTo.marker('1');
-verify.quickInfoIs("function makePoint(x: number): {\n    b: number;\n    x: number;\n}", undefined);
+verify.quickInfoAt("1", "function makePoint(x: number): {\n    b: number;\n    x: number;\n}", undefined);
 
-goTo.marker('2');
-verify.quickInfoIs("var x: number", undefined);
+verify.quickInfoAt("2", "var x: number", undefined);
 
 goTo.marker('3');
 verify.memberListContains("x", "(property) x: number", undefined);
 verify.memberListContains("b", "(property) b: number", undefined);
 verify.quickInfoIs("(property) x: number", undefined);
 
-goTo.marker('4');
-verify.quickInfoIs("var point: {\n    b: number;\n    x: number;\n}", undefined);
+verify.quickInfoAt("4", "var point: {\n    b: number;\n    x: number;\n}", undefined);

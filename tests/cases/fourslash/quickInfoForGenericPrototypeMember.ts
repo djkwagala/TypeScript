@@ -6,8 +6,5 @@
 ////var x = new /*1*/C<any>();
 ////var y = C.proto/*2*/type;
 
-goTo.marker('1');
-verify.quickInfoIs('constructor C<any>(): C<any>');
-
-goTo.marker('2');
-verify.quickInfoIs('(property) C<T>.prototype: C<any>');
+verify.quickInfoAt("1", "constructor C<any>(): C<any>");
+verify.quickInfoAt("2", "(property) C<T>.prototype: C<any>");
