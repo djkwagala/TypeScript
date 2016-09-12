@@ -58,47 +58,58 @@
 ////}
 ////var myVar = new m.m2.c/*33*/1();
 
-verify.quickInfoAt("1", "class c2", "This is class c2 without constuctor");
-verify.quickInfoAt("2", "var i2: c2", "");
+verify.quickInfos({
+    1: ["class c2", "This is class c2 without constuctor"],
+    2: ["var i2: c2", ""]
+});
 
 goTo.marker('3');
 verify.currentSignatureHelpDocCommentIs("");
 
-verify.quickInfoAt("4", "var i2_c: typeof c2", "");
-verify.quickInfoAt("5", "class c2", "This is class c2 without constuctor");
-verify.quickInfoAt("6", "class c3", "");
-verify.quickInfoAt("7", "var i3: c3", "");
+verify.quickInfos({
+    4: ["var i2_c: typeof c2", ""],
+    5: ["class c2", "This is class c2 without constuctor"],
+    6: ["class c3", ""],
+    7: ["var i3: c3", ""]
+});
 
 goTo.marker('8');
 verify.currentSignatureHelpDocCommentIs("Constructor comment");
 
-verify.quickInfoAt("9", "var i3_c: typeof c3", "");
-verify.quickInfoAt("10", "class c3", "");
-verify.quickInfoAt("11", "class c4", "Class comment");
-verify.quickInfoAt("12", "var i4: c4", "");
+verify.quickInfos({
+    9: ["var i3_c: typeof c3", ""],
+    10: ["class c3", ""],
+    11: ["class c4", "Class comment"],
+    12: ["var i4: c4", ""]
+});
 
 goTo.marker('13');
 verify.currentSignatureHelpDocCommentIs("Constructor comment");
 
-verify.quickInfoAt("14", "var i4_c: typeof c4", "");
-verify.quickInfoAt("15", "class c4", "Class comment");
-verify.quickInfoAt("16", "class c5", "Class with statics");
-verify.quickInfoAt("17", "var i5: c5", "");
+verify.quickInfos({
+    14: ["var i4_c: typeof c4", ""],
+    15: ["class c4", "Class comment"],
+    16: ["class c5", "Class with statics"],
+    17: ["var i5: c5", ""]
+});
 
 goTo.marker('18');
 verify.currentSignatureHelpDocCommentIs("");
 
-verify.quickInfoAt("19", "var i5_c: typeof c5", "");
-verify.quickInfoAt("20", "class c5", "Class with statics");
-verify.quickInfoAt("21", "class c6", "class with statics and constructor");
-verify.quickInfoAt("22", "var i6: c6", "");
+verify.quickInfos({
+    19: ["var i5_c: typeof c5", ""],
+    20: ["class c5", "Class with statics"],
+    21: ["class c6", "class with statics and constructor"],
+    22: ["var i6: c6", ""]
+});
 
 goTo.marker('23');
 verify.currentSignatureHelpDocCommentIs("constructor comment");
 
-verify.quickInfoAt("24", "var i6_c: typeof c6", "");
-
-verify.quickInfoAt("25", "class c6", "class with statics and constructor");
+verify.quickInfos({
+    24: ["var i6_c: typeof c6", ""],
+    25: ["class c6", "class with statics and constructor"]
+});
 
 goTo.marker('26');
 verify.completionListContains("c2", "class c2", "This is class c2 without constuctor");
@@ -121,9 +132,11 @@ goTo.marker('27');
 verify.currentSignatureHelpDocCommentIs("constructor for a");
 verify.currentParameterHelpArgumentDocCommentIs("this is my a");
 
-verify.quickInfoAt("28", "constructor c2(): c2", "");
-verify.quickInfoAt("29", "constructor c3(): c3", "Constructor comment");
-verify.quickInfoAt("30", "constructor c4(): c4", "Constructor comment");
-verify.quickInfoAt("31", "constructor c5(): c5", "");
-verify.quickInfoAt("32", "constructor c6(): c6", "constructor comment");
-verify.quickInfoAt("33", "constructor m.m2.c1(): m.m2.c1", "constructor comment");
+verify.quickInfos({
+    28: ["constructor c2(): c2", ""],
+    29: ["constructor c3(): c3", "Constructor comment"],
+    30: ["constructor c4(): c4", "Constructor comment"],
+    31: ["constructor c5(): c5", ""],
+    32: ["constructor c6(): c6", "constructor comment"],
+    33: ["constructor m.m2.c1(): m.m2.c1", "constructor comment"]
+});

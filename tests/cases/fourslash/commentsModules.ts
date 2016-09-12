@@ -229,14 +229,11 @@ goTo.marker('34');
 verify.completionListContains("c", 'class c', "");
 verify.quickInfoIs('class c', "");
 
-verify.quickInfoAt("35", "var myComplexVal: number", "");
-
-verify.quickInfoAt("36", "namespace complexM", "");
-
-verify.quickInfoAt("37", "namespace complexM.m2", "");
-
-verify.quickInfoAt("38", "constructor complexM.m2.c(): complexM.m2.c", "");
-
-verify.quickInfoAt("39", "(method) complexM.m2.c.foo2(): complexM.m1.c", "");
-
-verify.quickInfoAt("40", "(method) complexM.m1.c.foo(): number", "");
+verify.quickInfos({
+    35: ["var myComplexVal: number", ""],
+    36: ["namespace complexM", ""],
+    37: ["namespace complexM.m2", ""],
+    38: ["constructor complexM.m2.c(): complexM.m2.c", ""],
+    39: ["(method) complexM.m2.c.foo2(): complexM.m1.c", ""],
+    40: ["(method) complexM.m1.c.foo(): number", ""]
+});

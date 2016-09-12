@@ -225,11 +225,13 @@
 ////}
 ////foo(null);
 
-verify.quickInfoAt("1", "function f1(a: number): number (+1 overload)", "this is signature 1");
-verify.quickInfoAt("2", "function f1(b: string): number (+1 overload)", "");
-verify.quickInfoAt("3", "function f1(a: number): number (+1 overload)", "this is signature 1");
-verify.quickInfoAt("4q", "function f1(b: string): number (+1 overload)", "");
-verify.quickInfoAt("o4q", "function f1(a: number): number (+1 overload)", "this is signature 1");
+verify.quickInfos({
+    1: ["function f1(a: number): number (+1 overload)", "this is signature 1"],
+    2: ["function f1(b: string): number (+1 overload)", ""],
+    3: ["function f1(a: number): number (+1 overload)", "this is signature 1"],
+    "4q": ["function f1(b: string): number (+1 overload)", ""],
+    "o4q": ["function f1(a: number): number (+1 overload)", "this is signature 1"]
+});
 
 goTo.marker('4');
 verify.currentSignatureHelpDocCommentIs("");
@@ -238,11 +240,13 @@ goTo.marker('o4');
 verify.currentSignatureHelpDocCommentIs("this is signature 1");
 verify.currentParameterHelpArgumentDocCommentIs("param a");
 
-verify.quickInfoAt("5", "function f2(a: number): number (+1 overload)", "");
-verify.quickInfoAt("6", "function f2(b: string): number (+1 overload)", "this is signature 2");
-verify.quickInfoAt("7", "function f2(a: number): number (+1 overload)", "");
-verify.quickInfoAt("8q", "function f2(b: string): number (+1 overload)", "this is signature 2");
-verify.quickInfoAt("o8q", "function f2(a: number): number (+1 overload)", "");
+verify.quickInfos({
+    5: ["function f2(a: number): number (+1 overload)", ""],
+    6: ["function f2(b: string): number (+1 overload)", "this is signature 2"],
+    7: ["function f2(a: number): number (+1 overload)", ""],
+    "8q": ["function f2(b: string): number (+1 overload)", "this is signature 2"],
+    "o8q": ["function f2(a: number): number (+1 overload)", ""]
+});
 
 goTo.marker('8');
 verify.currentSignatureHelpDocCommentIs("this is signature 2");
@@ -252,11 +256,13 @@ goTo.marker('o8');
 verify.currentSignatureHelpDocCommentIs("");
 verify.currentParameterHelpArgumentDocCommentIs("param a");
 
-verify.quickInfoAt("9", "function f3(a: number): number (+1 overload)", "");
-verify.quickInfoAt("10", "function f3(b: string): number (+1 overload)", "");
-verify.quickInfoAt("11", "function f3(a: number): number (+1 overload)", "");
-verify.quickInfoAt("12q", "function f3(b: string): number (+1 overload)", "");
-verify.quickInfoAt("o12q", "function f3(a: number): number (+1 overload)", "");
+verify.quickInfos({
+    9: ["function f3(a: number): number (+1 overload)", ""],
+    10: ["function f3(b: string): number (+1 overload)", ""],
+    11: ["function f3(a: number): number (+1 overload)", ""],
+    "12q": ["function f3(b: string): number (+1 overload)", ""],
+    "o12q": ["function f3(a: number): number (+1 overload)", ""]
+});
 
 goTo.marker('12');
 verify.currentSignatureHelpDocCommentIs("");
@@ -266,11 +272,13 @@ goTo.marker('o12');
 verify.currentSignatureHelpDocCommentIs("");
 verify.currentParameterHelpArgumentDocCommentIs("");
 
-verify.quickInfoAt("13", "function f4(a: number): number (+1 overload)", "this is signature 4 - with number parameter");
-verify.quickInfoAt("14", "function f4(b: string): number (+1 overload)", "this is signature 4 - with string parameter");
-verify.quickInfoAt("15", "function f4(a: number): number (+1 overload)", "this is signature 4 - with number parameter");
-verify.quickInfoAt("16q", "function f4(b: string): number (+1 overload)", "this is signature 4 - with string parameter");
-verify.quickInfoAt("o16q", "function f4(a: number): number (+1 overload)", "this is signature 4 - with number parameter");
+verify.quickInfos({
+    13: ["function f4(a: number): number (+1 overload)", "this is signature 4 - with number parameter"],
+    14: ["function f4(b: string): number (+1 overload)", "this is signature 4 - with string parameter"],
+    15: ["function f4(a: number): number (+1 overload)", "this is signature 4 - with number parameter"],
+    "16q": ["function f4(b: string): number (+1 overload)", "this is signature 4 - with string parameter"],
+    "o16q": ["function f4(a: number): number (+1 overload)", "this is signature 4 - with number parameter"]
+});
 
 goTo.marker('16');
 verify.currentSignatureHelpDocCommentIs("this is signature 4 - with string parameter");
@@ -551,78 +559,47 @@ verify.completionListContains("c5_i_2", "var c5_i_2: c5", "");
 verify.completionListContains('multiOverload', 'function multiOverload(a: number): string (+2 overloads)', 'This is multiOverload F1 1');
 verify.completionListContains('ambientF1', 'function ambientF1(a: number): string (+2 overloads)', 'This is ambient F1 1');
 
-verify.quickInfoAt("66", "var c1_i_1: c1", "");
-verify.quickInfoAt("67", "var c2_i_2: c2", "");
-verify.quickInfoAt("68", "var c3_i_2: c3", "");
-verify.quickInfoAt("69", "var c4_i_1: c4", "");
-verify.quickInfoAt("70", "var c5_i_1: c5", "");
-
-verify.quickInfoAt("71", "function multiOverload(a: number): string (+2 overloads)", "This is multiOverload F1 1");
-verify.quickInfoAt("72", "function multiOverload(b: string): string (+2 overloads)", "This is multiOverload F1 2");
-verify.quickInfoAt("73", "function multiOverload(c: boolean): string (+2 overloads)", "This is multiOverload F1 3");
-
-verify.quickInfoAt("74", "function ambientF1(a: number): string (+2 overloads)", "This is ambient F1 1");
-verify.quickInfoAt("75", "function ambientF1(b: string): string (+2 overloads)", "This is ambient F1 2");
-verify.quickInfoAt("76", "function ambientF1(c: boolean): boolean (+2 overloads)", "This is ambient F1 3");
-
-verify.quickInfoAt("77", "(parameter) aa: i3", "");
-
-verify.quickInfoAt("78", "constructor c1(a: number): c1 (+1 overload)", "");
-
-verify.quickInfoAt("79", "constructor c1(b: string): c1 (+1 overload)", "");
-
-verify.quickInfoAt("80", "constructor c1(a: number): c1 (+1 overload)", "");
-
-verify.quickInfoAt("81", "constructor c2(a: number): c2 (+1 overload)", "c2 1");
-
-verify.quickInfoAt("82", "constructor c2(b: string): c2 (+1 overload)", "");
-
-verify.quickInfoAt("83", "constructor c2(a: number): c2 (+1 overload)", "c2 1");
-
-verify.quickInfoAt("84", "constructor c3(a: number): c3 (+1 overload)", "");
-
-verify.quickInfoAt("85", "constructor c3(b: string): c3 (+1 overload)", "c3 2");
-
-verify.quickInfoAt("86", "constructor c3(a: number): c3 (+1 overload)", "");
-
-verify.quickInfoAt("87", "constructor c4(a: number): c4 (+1 overload)", "c4 1");
-
-verify.quickInfoAt("88", "constructor c4(b: string): c4 (+1 overload)", "c4 2");
-
-verify.quickInfoAt("89", "constructor c4(a: number): c4 (+1 overload)", "c4 1");
-
-verify.quickInfoAt("90", "constructor c5(a: number): c5 (+1 overload)", "c5 1");
-
-verify.quickInfoAt("91", "constructor c5(b: string): c5 (+1 overload)", "c5 2");
-
-verify.quickInfoAt("92", "constructor c5(a: number): c5 (+1 overload)", "c5 1");
-
-verify.quickInfoAt("93", "(method) c.prop1(a: number): number (+1 overload)", "");
-
-verify.quickInfoAt("94", "(method) c.prop1(b: string): number (+1 overload)", "");
-
-verify.quickInfoAt("95", "(method) c.prop1(a: number): number (+1 overload)", "");
-
-verify.quickInfoAt("96", "(method) c.prop2(a: number): number (+1 overload)", "prop2 1");
-
-verify.quickInfoAt("97", "(method) c.prop2(b: string): number (+1 overload)", "");
-
-verify.quickInfoAt("98", "(method) c.prop2(a: number): number (+1 overload)", "prop2 1");
-
-verify.quickInfoAt("99", "(method) c.prop3(a: number): number (+1 overload)", "");
-
-verify.quickInfoAt("100", "(method) c.prop3(b: string): number (+1 overload)", "prop3 2");
-
-verify.quickInfoAt("101", "(method) c.prop3(a: number): number (+1 overload)", "");
-
-verify.quickInfoAt("102", "(method) c.prop4(a: number): number (+1 overload)", "prop4 1");
-
-verify.quickInfoAt("103", "(method) c.prop4(b: string): number (+1 overload)", "prop4 2");
-
-verify.quickInfoAt("104", "(method) c.prop4(a: number): number (+1 overload)", "prop4 1");
-
-verify.quickInfoAt("105", "(method) c.prop5(a: number): number (+1 overload)", "prop5 1");
-
-verify.quickInfoAt("106", "(method) c.prop5(b: string): number (+1 overload)", "prop5 2");
-
-verify.quickInfoAt("107", "(method) c.prop5(a: number): number (+1 overload)", "prop5 1");
+verify.quickInfos({
+    66: ["var c1_i_1: c1", ""],
+    67: ["var c2_i_2: c2", ""],
+    68: ["var c3_i_2: c3", ""],
+    69: ["var c4_i_1: c4", ""],
+    70: ["var c5_i_1: c5", ""],
+    71: ["function multiOverload(a: number): string (+2 overloads)", "This is multiOverload F1 1"],
+    72: ["function multiOverload(b: string): string (+2 overloads)", "This is multiOverload F1 2"],
+    73: ["function multiOverload(c: boolean): string (+2 overloads)", "This is multiOverload F1 3"],
+    74: ["function ambientF1(a: number): string (+2 overloads)", "This is ambient F1 1"],
+    75: ["function ambientF1(b: string): string (+2 overloads)", "This is ambient F1 2"],
+    76: ["function ambientF1(c: boolean): boolean (+2 overloads)", "This is ambient F1 3"],
+    77: ["(parameter) aa: i3", ""],
+    78: ["constructor c1(a: number): c1 (+1 overload)", ""],
+    79: ["constructor c1(b: string): c1 (+1 overload)", ""],
+    80: ["constructor c1(a: number): c1 (+1 overload)", ""],
+    81: ["constructor c2(a: number): c2 (+1 overload)", "c2 1"],
+    82: ["constructor c2(b: string): c2 (+1 overload)", ""],
+    83: ["constructor c2(a: number): c2 (+1 overload)", "c2 1"],
+    84: ["constructor c3(a: number): c3 (+1 overload)", ""],
+    85: ["constructor c3(b: string): c3 (+1 overload)", "c3 2"],
+    86: ["constructor c3(a: number): c3 (+1 overload)", ""],
+    87: ["constructor c4(a: number): c4 (+1 overload)", "c4 1"],
+    88: ["constructor c4(b: string): c4 (+1 overload)", "c4 2"],
+    89: ["constructor c4(a: number): c4 (+1 overload)", "c4 1"],
+    90: ["constructor c5(a: number): c5 (+1 overload)", "c5 1"],
+    91: ["constructor c5(b: string): c5 (+1 overload)", "c5 2"],
+    92: ["constructor c5(a: number): c5 (+1 overload)", "c5 1"],
+    93: ["(method) c.prop1(a: number): number (+1 overload)", ""],
+    94: ["(method) c.prop1(b: string): number (+1 overload)", ""],
+    95: ["(method) c.prop1(a: number): number (+1 overload)", ""],
+    96: ["(method) c.prop2(a: number): number (+1 overload)", "prop2 1"],
+    97: ["(method) c.prop2(b: string): number (+1 overload)", ""],
+    98: ["(method) c.prop2(a: number): number (+1 overload)", "prop2 1"],
+    99: ["(method) c.prop3(a: number): number (+1 overload)", ""],
+    100: ["(method) c.prop3(b: string): number (+1 overload)", "prop3 2"],
+    101: ["(method) c.prop3(a: number): number (+1 overload)", ""],
+    102: ["(method) c.prop4(a: number): number (+1 overload)", "prop4 1"],
+    103: ["(method) c.prop4(b: string): number (+1 overload)", "prop4 2"],
+    104: ["(method) c.prop4(a: number): number (+1 overload)", "prop4 1"],
+    105: ["(method) c.prop5(a: number): number (+1 overload)", "prop5 1"],
+    106: ["(method) c.prop5(b: string): number (+1 overload)", "prop5 2"],
+    107: ["(method) c.prop5(a: number): number (+1 overload)", "prop5 1"]
+});

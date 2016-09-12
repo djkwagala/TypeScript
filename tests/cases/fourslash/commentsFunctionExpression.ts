@@ -57,14 +57,20 @@ verify.currentParameterHelpArgumentDocCommentIs("param b");
 
 
 // no documentation from nested lambda
-verify.quickInfoAt("7", "function anotherFunc(a: number): string", "");
-verify.quickInfoAt("8", "(local var) lambdaVar: (b: string) => string", "documentation\ninner docs ");
-verify.quickInfoAt("9", "(parameter) b: string", "{string} inner parameter ");
-verify.quickInfoAt("10", "(local var) localVar: string", "");
-verify.quickInfoAt("11", "(local var) localVar: string", "");
-verify.quickInfoAt("12", "(parameter) b: string", "{string} inner parameter ");
-verify.quickInfoAt("13", "(local var) lambdaVar: (b: string) => string", "documentation\ninner docs ");
-verify.quickInfoAt("14", "var assigned: (s: string) => number", "On variable\n@returns the parameter's length\nSummary on expression\n@returns return on expression");
+verify.quickInfos({
+    7: ["function anotherFunc(a: number): string", ""],
+    8: ["(local var) lambdaVar: (b: string) => string", "documentation\ninner docs "],
+    9: ["(parameter) b: string", "{string} inner parameter "],
+    10: ["(local var) localVar: string", ""],
+    11: ["(local var) localVar: string", ""],
+    12: ["(parameter) b: string", "{string} inner parameter "],
+    13: ["(local var) lambdaVar: (b: string) => string", "documentation\ninner docs "],
+    14: [
+        "var assigned: (s: string) => number",
+        "On variable\n@returns the parameter's length\nSummary on expression\n@returns return on expression"
+    ]
+});
+
 goTo.marker('15');
 verify.completionListContains('s', '(parameter) s: string', "the first parameter!\nparam on expression\nOn parameter ");
 verify.quickInfoAt("16", "var assigned: (s: string) => number", "On variable\n@returns the parameter's length\nSummary on expression\n@returns return on expression");

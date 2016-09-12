@@ -250,15 +250,17 @@ verify.currentSignatureHelpDocCommentIs("");
 goTo.marker('l5');
 verify.currentSignatureHelpDocCommentIs("");
 
-verify.quickInfoAt("1iq", "var i1_i: i1", "");
-verify.quickInfoAt("2q", "(method) i1.i1_f1(): void", "i1_f1");
-verify.quickInfoAt("3q", "(method) i1.i1_nc_f1(): void", "");
-verify.quickInfoAt("4q", "(method) i1.f1(): void", "");
-verify.quickInfoAt("5q", "(method) i1.nc_f1(): void", "");
-verify.quickInfoAt("l2q", "(property) i1.i1_l1: () => void", "");
-verify.quickInfoAt("l3q", "(property) i1.i1_nc_l1: () => void", "");
-verify.quickInfoAt("l4q", "(property) i1.l1: () => void", "");
-verify.quickInfoAt("l5q", "(property) i1.nc_l1: () => void", "");
+verify.quickInfos({
+    "1iq": ["var i1_i: i1", ""],
+    "2q": ["(method) i1.i1_f1(): void", "i1_f1"],
+    "3q": ["(method) i1.i1_nc_f1(): void", ""],
+    "4q": ["(method) i1.f1(): void", ""],
+    "5q": ["(method) i1.nc_f1(): void", ""],
+    "l2q": ["(property) i1.i1_l1: () => void", ""],
+    "l3q": ["(property) i1.i1_nc_l1: () => void", ""],
+    "l4q": ["(property) i1.l1: () => void", ""],
+    "l5q": ["(property) i1.nc_l1: () => void", ""]
+});
 
 goTo.marker('6');
 verify.memberListContains("i1_p1", "(property) c1.i1_p1: number", "");
@@ -290,15 +292,17 @@ verify.currentSignatureHelpDocCommentIs("");
 goTo.marker('l10');
 verify.currentSignatureHelpDocCommentIs("");
 
-verify.quickInfoAt("6iq", "var c1_i: c1", "");
-verify.quickInfoAt("7q", "(method) c1.i1_f1(): void", "");
-verify.quickInfoAt("8q", "(method) c1.i1_nc_f1(): void", "");
-verify.quickInfoAt("9q", "(method) c1.f1(): void", "c1_f1");
-verify.quickInfoAt("10q", "(method) c1.nc_f1(): void", "c1_nc_f1");
-verify.quickInfoAt("l7q", "(property) c1.i1_l1: () => void", "");
-verify.quickInfoAt("l8q", "(property) c1.i1_nc_l1: () => void", "");
-verify.quickInfoAt("l9q", "(property) c1.l1: () => void", "");
-verify.quickInfoAt("l10q", "(property) c1.nc_l1: () => void", "");
+verify.quickInfos({
+    "6iq": ["var c1_i: c1", ""],
+    "7q": ["(method) c1.i1_f1(): void", ""],
+    "8q": ["(method) c1.i1_nc_f1(): void", ""],
+    "9q": ["(method) c1.f1(): void", "c1_f1"],
+    "10q": ["(method) c1.nc_f1(): void", "c1_nc_f1"],
+    "l7q": ["(property) c1.i1_l1: () => void", ""],
+    "l8q": ["(property) c1.i1_nc_l1: () => void", ""],
+    "l9q": ["(property) c1.l1: () => void", ""],
+    "l10q": ["(property) c1.nc_l1: () => void", ""]
+});
 
 goTo.marker('11');
 verify.memberListContains("i1_p1", "(property) i1.i1_p1: number", "i1_p1");
@@ -329,14 +333,17 @@ goTo.marker('l14');
 verify.currentSignatureHelpDocCommentIs("");
 goTo.marker('l15');
 verify.currentSignatureHelpDocCommentIs("");
-verify.quickInfoAt("12q", "(method) i1.i1_f1(): void", "i1_f1");
-verify.quickInfoAt("13q", "(method) i1.i1_nc_f1(): void", "");
-verify.quickInfoAt("14q", "(method) i1.f1(): void", "");
-verify.quickInfoAt("15q", "(method) i1.nc_f1(): void", "");
-verify.quickInfoAt("l12q", "(property) i1.i1_l1: () => void", "");
-verify.quickInfoAt("l13q", "(property) i1.i1_nc_l1: () => void", "");
-verify.quickInfoAt("l14q", "(property) i1.l1: () => void", "");
-verify.quickInfoAt("l15q", "(property) i1.nc_l1: () => void", "");
+
+verify.quickInfos({
+    "12q": ["(method) i1.i1_f1(): void", "i1_f1"],
+    "13q": ["(method) i1.i1_nc_f1(): void", ""],
+    "14q": ["(method) i1.f1(): void", ""],
+    "15q": ["(method) i1.nc_f1(): void", ""],
+    "l12q": ["(property) i1.i1_l1: () => void", ""],
+    "l13q": ["(property) i1.i1_nc_l1: () => void", ""],
+    "l14q": ["(property) i1.l1: () => void", ""],
+    "l15q": ["(property) i1.nc_l1: () => void", ""]
+});
 
 goTo.marker('16');
 verify.completionListContains("i1", "interface i1", "i1 is interface with properties");
@@ -356,13 +363,15 @@ verify.currentSignatureHelpDocCommentIs("c2 constructor");
 goTo.marker('18');
 verify.currentSignatureHelpDocCommentIs("");
 
-verify.quickInfoAt("18sq", "constructor c2(a: number): c2", "c2 constructor");
+verify.quickInfos({
+    "18sq": ["constructor c2(a: number): c2", "c2 constructor"],
 
-verify.quickInfoAt("18spropq", "class c2", "");
-verify.quickInfoAt("18spropProp", "(property) c2.c2_p1: number", "c2 c2_p1");
+    "18spropq": ["class c2", ""],
+    "18spropProp": ["(property) c2.c2_p1: number", "c2 c2_p1"],
 
-verify.quickInfoAt("17q", "constructor c2(a: number): c2", "c2 constructor");
-verify.quickInfoAt("18q", "constructor c3(): c3", "");
+    "17q": ["constructor c2(a: number): c2", "c2 constructor"],
+    "18q": ["constructor c3(): c3", ""]
+});
 
 goTo.marker('19');
 verify.memberListContains("c2_p1", "(property) c2.c2_p1: number", "c2 c2_p1");
@@ -386,10 +395,12 @@ verify.currentSignatureHelpDocCommentIs("c2 f1");
 goTo.marker('23');
 verify.currentSignatureHelpDocCommentIs("");
 
-verify.quickInfoAt("20q", "(method) c2.c2_f1(): void", "c2 c2_f1");
-verify.quickInfoAt("21q", "(method) c2.c2_nc_f1(): void", "");
-verify.quickInfoAt("22q", "(method) c2.f1(): void", "c2 f1");
-verify.quickInfoAt("23q", "(method) c2.nc_f1(): void", "");
+verify.quickInfos({
+    "20q": ["(method) c2.c2_f1(): void", "c2 c2_f1"],
+    "21q": ["(method) c2.c2_nc_f1(): void", ""],
+    "22q": ["(method) c2.f1(): void", "c2 f1"],
+    "23q": ["(method) c2.nc_f1(): void", ""]
+});
 
 goTo.marker('24');
 verify.memberListContains("c2_p1", "(property) c2.c2_p1: number", "c2 c2_p1");
@@ -413,10 +424,12 @@ verify.currentSignatureHelpDocCommentIs("c3 f1");
 goTo.marker('28');
 verify.currentSignatureHelpDocCommentIs("");
 
-verify.quickInfoAt("25q", "(method) c2.c2_f1(): void", "c2 c2_f1");
-verify.quickInfoAt("26q", "(method) c2.c2_nc_f1(): void", "");
-verify.quickInfoAt("27q", "(method) c3.f1(): void", "c3 f1");
-verify.quickInfoAt("28q", "(method) c3.nc_f1(): void", "");
+verify.quickInfos({
+    "25q": ["(method) c2.c2_f1(): void", "c2 c2_f1"],
+    "26q": ["(method) c2.c2_nc_f1(): void", ""],
+    "27q": ["(method) c3.f1(): void", "c3 f1"],
+    "28q": ["(method) c3.nc_f1(): void", ""]
+});
 
 goTo.marker('29');
 verify.memberListContains("c2_p1", "(property) c2.c2_p1: number", "c2 c2_p1");
@@ -440,15 +453,19 @@ verify.currentSignatureHelpDocCommentIs("c2 f1");
 goTo.marker('33');
 verify.currentSignatureHelpDocCommentIs("");
 
-verify.quickInfoAt("30q", "(method) c2.c2_f1(): void", "c2 c2_f1");
-verify.quickInfoAt("31q", "(method) c2.c2_nc_f1(): void", "");
-verify.quickInfoAt("32q", "(method) c2.f1(): void", "c2 f1");
-verify.quickInfoAt("33q", "(method) c2.nc_f1(): void", "");
+verify.quickInfos({
+    "30q": ["(method) c2.c2_f1(): void", "c2 c2_f1"],
+    "31q": ["(method) c2.c2_nc_f1(): void", ""],
+    "32q": ["(method) c2.f1(): void", "c2 f1"],
+    "33q": ["(method) c2.nc_f1(): void", ""]
+});
 
 goTo.marker('34');
 verify.currentSignatureHelpDocCommentIs("c2 constructor");
-verify.quickInfoAt("34iq", "var c4_i: c4", "");
-verify.quickInfoAt("34q", "constructor c4(a: number): c4", "c2 constructor");
+verify.quickInfos({
+    "34iq": ["var c4_i: c4", ""],
+    "34q": ["constructor c4(a: number): c4", "c2 constructor"]
+});
 
 goTo.marker('35');
 verify.completionListContains("c2", "class c2", "");
@@ -488,16 +505,18 @@ verify.currentSignatureHelpDocCommentIs("");
 goTo.marker('l40');
 verify.currentSignatureHelpDocCommentIs("");
 
-verify.quickInfoAt("36iq", "var i2_i: i2", "");
-verify.quickInfoAt("37iq", "var i3_i: i3", "");
-verify.quickInfoAt("37q", "(method) i2.i2_f1(): void", "i2_f1");
-verify.quickInfoAt("38q", "(method) i2.i2_nc_f1(): void", "");
-verify.quickInfoAt("39q", "(method) i2.f1(): void", "i2 f1");
-verify.quickInfoAt("40q", "(method) i2.nc_f1(): void", "");
-verify.quickInfoAt("l37q", "(property) i2.i2_l1: () => void", "");
-verify.quickInfoAt("l38q", "(property) i2.i2_nc_l1: () => void", "");
-verify.quickInfoAt("l39q", "(property) i2.l1: () => void", "");
-verify.quickInfoAt("l40q", "(property) i2.nc_l1: () => void", "");
+verify.quickInfos({
+    "36iq": ["var i2_i: i2", ""],
+    "37iq": ["var i3_i: i3", ""],
+    "37q": ["(method) i2.i2_f1(): void", "i2_f1"],
+    "38q": ["(method) i2.i2_nc_f1(): void", ""],
+    "39q": ["(method) i2.f1(): void", "i2 f1"],
+    "40q": ["(method) i2.nc_f1(): void", ""],
+    "l37q": ["(property) i2.i2_l1: () => void", ""],
+    "l38q": ["(property) i2.i2_nc_l1: () => void", ""],
+    "l39q": ["(property) i2.l1: () => void", ""],
+    "l40q": ["(property) i2.nc_l1: () => void", ""]
+});
 
 goTo.marker('41');
 verify.memberListContains("i2_p1", "(property) i2.i2_p1: number", "i2_p1");
@@ -529,14 +548,16 @@ verify.currentSignatureHelpDocCommentIs("");
 goTo.marker('l45');
 verify.currentSignatureHelpDocCommentIs("");
 
-verify.quickInfoAt("42q", "(method) i2.i2_f1(): void", "i2_f1");
-verify.quickInfoAt("43q", "(method) i2.i2_nc_f1(): void", "");
-verify.quickInfoAt("44q", "(method) i3.f1(): void", "i3 f1");
-verify.quickInfoAt("45q", "(method) i3.nc_f1(): void", "");
-verify.quickInfoAt("l42q", "(property) i2.i2_l1: () => void", "");
-verify.quickInfoAt("l43q", "(property) i2.i2_nc_l1: () => void", "");
-verify.quickInfoAt("l44q", "(property) i3.l1: () => void", "");
-verify.quickInfoAt("l45q", "(property) i3.nc_l1: () => void", "");
+verify.quickInfos({
+    "42q": ["(method) i2.i2_f1(): void", "i2_f1"],
+    "43q": ["(method) i2.i2_nc_f1(): void", ""],
+    "44q": ["(method) i3.f1(): void", "i3 f1"],
+    "45q": ["(method) i3.nc_f1(): void", ""],
+    "l42q": ["(property) i2.i2_l1: () => void", ""],
+    "l43q": ["(property) i2.i2_nc_l1: () => void", ""],
+    "l44q": ["(property) i3.l1: () => void", ""],
+    "l45q": ["(property) i3.nc_l1: () => void", ""]
+});
 
 goTo.marker('46');
 verify.memberListContains("i2_p1", "(property) i2.i2_p1: number", "i2_p1");
@@ -568,14 +589,16 @@ verify.currentSignatureHelpDocCommentIs("");
 goTo.marker('l50');
 verify.currentSignatureHelpDocCommentIs("");
 
-verify.quickInfoAt("47q", "(method) i2.i2_f1(): void", "i2_f1");
-verify.quickInfoAt("48q", "(method) i2.i2_nc_f1(): void", "");
-verify.quickInfoAt("49q", "(method) i2.f1(): void", "i2 f1");
-verify.quickInfoAt("50q", "(method) i2.nc_f1(): void", "");
-verify.quickInfoAt("l47q", "(property) i2.i2_l1: () => void", "");
-verify.quickInfoAt("l48q", "(property) i2.i2_nc_l1: () => void", "");
-verify.quickInfoAt("l49q", "(property) i2.l1: () => void", "");
-verify.quickInfoAt("l40q", "(property) i2.nc_l1: () => void", "");
+verify.quickInfos({
+    "47q": ["(method) i2.i2_f1(): void", "i2_f1"],
+    "48q": ["(method) i2.i2_nc_f1(): void", ""],
+    "49q": ["(method) i2.f1(): void", "i2 f1"],
+    "50q": ["(method) i2.nc_f1(): void", ""],
+    "l47q": ["(property) i2.i2_l1: () => void", ""],
+    "l48q": ["(property) i2.i2_nc_l1: () => void", ""],
+    "l49q": ["(property) i2.l1: () => void", ""],
+    "l40q": ["(property) i2.nc_l1: () => void", ""]
+});
 
 goTo.marker('51');
 verify.completionListContains("i2", "interface i2", "");
@@ -587,9 +610,11 @@ goTo.marker('51i');
 verify.completionListContains("i2", "interface i2", "");
 verify.completionListContains("i3", "interface i3", "");
 
-verify.quickInfoAt("52", "constructor c5(): c5", "");
-verify.quickInfoAt("53", "class c5", "c5 class");
-verify.quickInfoAt("54", "(property) c5.b: number", "");
-verify.quickInfoAt("55", "constructor c2(a: number): c2", "c2 constructor");
-verify.quickInfoAt("56", "constructor c3(): c3", "");
-verify.quickInfoAt("57", "constructor c6(): c6", "");
+verify.quickInfos({
+    52: ["constructor c5(): c5", ""],
+    53: ["class c5", "c5 class"],
+    54: ["(property) c5.b: number", ""],
+    55: ["constructor c2(a: number): c2", "c2 constructor"],
+    56: ["constructor c3(): c3", ""],
+    57: ["constructor c6(): c6", ""]
+});
